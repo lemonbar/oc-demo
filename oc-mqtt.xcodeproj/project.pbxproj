@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F3561638528A56B77E57B43 /* libPods-oc-mqtt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D805A15F282682835008944 /* libPods-oc-mqtt.a */; };
+		99DAE772E559E7EC542F65C7 /* libPods-oc-mqttTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CD27626F26EA409A52EB62 /* libPods-oc-mqttTests.a */; };
 		E48C0266212D417B00A2916F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E48C0265212D417B00A2916F /* AppDelegate.m */; };
 		E48C0269212D417B00A2916F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48C0268212D417B00A2916F /* ViewController.m */; };
 		E48C026C212D417B00A2916F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48C026A212D417B00A2916F /* Main.storyboard */; };
@@ -28,6 +30,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		087A6F2F2A20DE117435BDDC /* Pods-oc-mqtt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oc-mqtt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oc-mqtt/Pods-oc-mqtt.debug.xcconfig"; sourceTree = "<group>"; };
+		2D805A15F282682835008944 /* libPods-oc-mqtt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-oc-mqtt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77091D9B25A87EB30FE862D0 /* Pods-oc-mqtt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oc-mqtt.release.xcconfig"; path = "Pods/Target Support Files/Pods-oc-mqtt/Pods-oc-mqtt.release.xcconfig"; sourceTree = "<group>"; };
+		7CC64A65B5D66FB394673BD0 /* Pods-oc-mqttTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oc-mqttTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-oc-mqttTests/Pods-oc-mqttTests.release.xcconfig"; sourceTree = "<group>"; };
+		8D68AE3AAAFD8F936BB0C268 /* Pods-oc-mqttTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oc-mqttTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oc-mqttTests/Pods-oc-mqttTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E48C0261212D417B00A2916F /* oc-mqtt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oc-mqtt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48C0264212D417B00A2916F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E48C0265212D417B00A2916F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +49,7 @@
 		E48C027C212D417C00A2916F /* oc-mqttTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "oc-mqttTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48C0280212D417C00A2916F /* oc_mqttTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oc_mqttTests.m; sourceTree = "<group>"; };
 		E48C0282212D417C00A2916F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2CD27626F26EA409A52EB62 /* libPods-oc-mqttTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-oc-mqttTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F3561638528A56B77E57B43 /* libPods-oc-mqtt.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,18 +65,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99DAE772E559E7EC542F65C7 /* libPods-oc-mqttTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52CADF11B023AA78EF1D494F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D805A15F282682835008944 /* libPods-oc-mqtt.a */,
+				F2CD27626F26EA409A52EB62 /* libPods-oc-mqttTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A57B62EDBD4E5472050FA02E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				087A6F2F2A20DE117435BDDC /* Pods-oc-mqtt.debug.xcconfig */,
+				77091D9B25A87EB30FE862D0 /* Pods-oc-mqtt.release.xcconfig */,
+				8D68AE3AAAFD8F936BB0C268 /* Pods-oc-mqttTests.debug.xcconfig */,
+				7CC64A65B5D66FB394673BD0 /* Pods-oc-mqttTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E48C0258212D417B00A2916F = {
 			isa = PBXGroup;
 			children = (
 				E48C0263212D417B00A2916F /* oc-mqtt */,
 				E48C027F212D417C00A2916F /* oc-mqttTests */,
 				E48C0262212D417B00A2916F /* Products */,
+				A57B62EDBD4E5472050FA02E /* Pods */,
+				52CADF11B023AA78EF1D494F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +145,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E48C0285212D417C00A2916F /* Build configuration list for PBXNativeTarget "oc-mqtt" */;
 			buildPhases = (
+				6DF258CF0FE3B45DF9158955 /* [CP] Check Pods Manifest.lock */,
 				E48C025D212D417B00A2916F /* Sources */,
 				E48C025E212D417B00A2916F /* Frameworks */,
 				E48C025F212D417B00A2916F /* Resources */,
@@ -130,6 +163,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E48C0288212D417C00A2916F /* Build configuration list for PBXNativeTarget "oc-mqttTests" */;
 			buildPhases = (
+				EB0808593BB652F00AC72931 /* [CP] Check Pods Manifest.lock */,
 				E48C0278212D417C00A2916F /* Sources */,
 				E48C0279212D417C00A2916F /* Frameworks */,
 				E48C027A212D417C00A2916F /* Resources */,
@@ -200,6 +234,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6DF258CF0FE3B45DF9158955 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-oc-mqtt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB0808593BB652F00AC72931 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-oc-mqttTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E48C025D212D417B00A2916F /* Sources */ = {
@@ -363,6 +436,7 @@
 		};
 		E48C0286212D417C00A2916F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 087A6F2F2A20DE117435BDDC /* Pods-oc-mqtt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -380,6 +454,7 @@
 		};
 		E48C0287212D417C00A2916F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77091D9B25A87EB30FE862D0 /* Pods-oc-mqtt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -397,6 +472,7 @@
 		};
 		E48C0289212D417C00A2916F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D68AE3AAAFD8F936BB0C268 /* Pods-oc-mqttTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -416,6 +492,7 @@
 		};
 		E48C028A212D417C00A2916F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CC64A65B5D66FB394673BD0 /* Pods-oc-mqttTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

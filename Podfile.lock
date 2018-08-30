@@ -1,0 +1,27 @@
+PODS:
+  - MQTTClient (0.15.1):
+    - MQTTClient/Core (= 0.15.1)
+  - MQTTClient/Core (0.15.1):
+    - MQTTClient/Manager
+    - MQTTClient/Min
+  - MQTTClient/Manager (0.15.1):
+    - MQTTClient/Min
+  - MQTTClient/Min (0.15.1)
+  - ZstdKit (1.0.0)
+
+DEPENDENCIES:
+  - MQTTClient
+  - ZstdKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MQTTClient
+    - ZstdKit
+
+SPEC CHECKSUMS:
+  MQTTClient: 92ead4ac75687e7021bcf8d564ff37aaf950d631
+  ZstdKit: 09800bd7a69345716f9859c51290ff2d66e573a1
+
+PODFILE CHECKSUM: 569353b837a98f297787ac15201eb39e2b82cf90
+
+COCOAPODS: 1.5.3
