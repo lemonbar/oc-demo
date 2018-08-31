@@ -125,8 +125,8 @@
         return;
     }
     MQTTCFSocketTransport *transport = [[MQTTCFSocketTransport alloc] init];
-    transport.host = @"58.63.252.24";
-    transport.port = 22017;
+    transport.host = @"132.232.34.246";
+    transport.port = 1883;
     
     session = [[MQTTSession alloc] init];
     session.delegate = self;
@@ -163,11 +163,306 @@
     NSMutableString *content = [NSMutableString stringWithCapacity:100];
     for (NSData *row in arr) {
         NSString *tmp = [[NSString alloc] initWithData:row encoding:NSUTF8StringEncoding];
+        [self handleRowContent:tmp];
         [content appendString:tmp];
         [content appendString:@";"];
-//        NSLog(@"%@",tmp);
     }
     textView.text = content;
+}
+
+- (void) handleRowContent:(NSString *)content {
+    NSLog(@"%@",content);
+    if (content.length == 0) {
+        return;
+    }
+    NSUInteger sepLoc = [content rangeOfString:@"="].location;
+    if (sepLoc == NSNotFound) {
+        return;
+    }
+    NSString *keyString = [content substringToIndex:sepLoc];
+    NSString *valueString = [content substringFromIndex:sepLoc+1];
+    if ([keyString isEqualToString:@"tbq"]) {
+        NSString *decodeValueString = [self decodeString:valueString];
+        NSLog(@"%@",decodeValueString);
+    }
+}
+
+#define BASE_POW_MAX_LEN  (30)
+#define NUMBER_LEN 128
+
+static const char BaseIndex [] = {
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,1,2,3,4,5,6,7,8,9,0,10,11,12,
+    13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,
+    29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,
+    45,46,47,48,49,50,51,52,53,54,55,0,56,0,57,58,
+    59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,
+    75,76,77,78,79,80,81,82,83,84,85,0,0,0,86,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+};
+
+// 0 ~ BASE_POW_MAX_LEN
+const char *BasePowList [BASE_POW_MAX_LEN+1] = {
+    "1",
+    "87",
+    "7569",
+    "658503",
+    "57289761",
+    "4984209207",
+    "433626201009",
+    "37725479487783",
+    "3282116715437121",
+    "285544154243029527",
+    "24842341419143568849",
+    "2161283703465490489863",
+    "188031682201497672618081",
+    "16358756351530297517773047",
+    "1423211802583135884046255089",
+    "123819426824732821912024192743",
+    "10772290133751755506346104768641",
+    "937189241636402729052111114871767",
+    "81535464022367037427533666993843729",
+    "7093585369945932256195429028464404423",
+    "617141927185296106289002325476403184801",
+    "53691347665120761247143202316447077077687",
+    "4671147246865506228501458601530895705758769",
+    "406389810477299041879626898333187926401012903",
+    "35355913511525016643527540154987349596888122561",
+    "3075964475502676447986895993483899414929266662807",
+    "267608909368732850974859951433099249098846199664209",
+    "23281975115079758034812815774679634671599619370786183",
+    "2025531835011938949028714972397128216429166885258397921",
+    "176221269646038688565498202598550154829337519017480619127",
+    "15331250459205365905198343626073863470152364154520813864049",
+};
+
+static char *getBaseIndexCharFormBaseChar(char s){
+    char *ret;
+    asprintf(&ret,"%d", BaseIndex[s]);
+    return ret;
+}
+
+static char* Add(char* a,char* b){
+    int maxlen = fmax(strlen(a),strlen(b));
+    char* p = (char*) malloc(maxlen+2);
+    char* pA=a+strlen(a)-1;
+    char* pB=b+strlen(b)-1;
+    int m=0;
+    int n=0;
+    int c=0;
+    int i=0;
+    
+    memset(p, 0,maxlen+2);
+    for (i=0;i<maxlen;i++){
+        m = n = 0;
+        if ((pA+1) != a){
+            m = *pA - 48;
+            pA--;
+        }
+        
+        if ((pB+1) != b){
+            n = *pB - 48;
+            pB--;
+        }
+        
+        *(p+i) = (m+n+c) % 10 + 48;
+        c = (m+n+c) / 10;
+    }
+    if (c>0){
+        *(p+i) = 48 + c;
+        *(p+i+1) = '\0';
+    }
+    else{
+        *(p+i) = '\0';
+    }
+    Reverse(p);
+    return p;
+}
+
+void Reverse(char* a){
+    int len1=strlen(a)-1;
+    int len2=(len1+1)/2;
+    char temp;
+    int i;
+    for (i=0;i<len2;i++){
+        temp=a[i];
+        a[i]=a[len1-i];
+        a[len1-i]=temp;
+    }
+    return;
+}
+
+static char* Mult(char* a,char* b){
+    int lenA =strlen(a);
+    int lenB =strlen(b);
+    
+    char* p = (char*) malloc(lenA+lenB+1);
+    memset(p, 0, lenA+lenB+1);
+    
+    char* pA=a+lenA-1;
+    char* pB=b+lenB-1;
+    int m=0;
+    int n=0;
+    int c=0;
+    
+    int s=0;
+    int i=0;
+    int j=0;
+    for (i=0;i<lenA;i++){
+        m = *(pA-i) - 48;
+        c=0;
+        for (j=0;j<lenB;j++)    {
+            n = *(pB-j) - 48;
+            if((*(p+i+j)>='0')&&(*(p+i+j)<='9')){
+                s = *(p+i+j) - 48;
+            }
+            else{
+                s = 0;
+            }
+            *(p+i+j) = (m*n+c+s) % 10 + 48;
+            c = (m*n+c+s) / 10;
+        }
+        *(p+i+j) = 48 + c;
+    }
+    if (c>0){
+        *(p+i+j) = '\0';
+    }
+    else{
+        *(p+i+j-1) = '\0';
+    }
+    Reverse(p);
+    return p;
+}
+
+- (NSString *) decodeString:(NSString *)str {
+    NSString *filterString = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    char *cStr = (char *)[filterString cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    size_t baseStrLen = strlen(cStr);
+    if (baseStrLen < 1 || baseStrLen > BASE_POW_MAX_LEN) {
+        return filterString;
+    }
+    
+    bool isFoundNeg = 0;
+    if(baseStrLen > 1 && cStr[0]==BaseChar[0]){
+        isFoundNeg = 1;
+        baseStrLen-=1;
+        memcpy(cStr, cStr+1, baseStrLen);
+    }
+    
+    int i,j;
+    //char baseArray[NUMBER_LEN];
+    char *baseArray = (char *)malloc(NUMBER_LEN);
+    memset(baseArray, 0, NUMBER_LEN);
+    //char *baseArray = (char *)"";
+    
+    char *dat;
+    char *pow;
+    char *m;
+    char *add;
+    for(i = 0 ; i < baseStrLen; ++i){
+        
+        dat = getBaseIndexCharFormBaseChar(cStr[i]);
+        if(i>0 && dat[0] == '0'){
+            if(dat != NULL){free(dat);}
+            continue;
+        }
+        
+        pow = (char*)BasePowList[baseStrLen -1 -i];
+        m = Mult(dat, pow);
+        
+        add = Add(baseArray, m);
+        
+        memcpy(baseArray, add, strlen(add));
+        
+        if(dat != NULL){free(dat);}
+        if(m != NULL){free(m);}
+        if(add != NULL){free(add);}
+    }
+    
+    //printf("==>> %s, %d, %x\n", baseArray, (baseArray[0]!=0), baseArray[0]);
+    
+    if(isFoundNeg){
+        if(baseArray[0]!='0'){
+            memcpy(baseArray+1, baseArray, strlen(baseArray));
+            baseArray[0]='-';
+        }
+    }
+    
+    if (baseArray) {
+        NSString *decodeString = [NSString stringWithCString:baseArray encoding:NSASCIIStringEncoding];
+        free(baseArray);
+        baseArray = NULL;
+        return decodeString;
+    }
+    
+    return filterString;
+}
+
+static int *initBaseArray(char *decStr, int lenDecStr){
+    int * pArray = NULL;
+    int i;
+    
+    pArray = (int *) calloc (lenDecStr,  sizeof (int));
+    
+    for (i = 0; i < lenDecStr; i++){
+        addDecValue (pArray, lenDecStr, decStr[i] - '0');
+    }
+    return (pArray);
+}
+
+//ascii 32~126
+static const char BaseChar [] = {
+    //' ',
+    '!',
+    //'"',
+    '#', '$', '%', '&', 0x27, '(', ')', '*', '+',   //12
+    
+    //',',
+    
+    '-', '.', '/',  // 3
+    
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',  // 10
+    
+    ':', ';', '<', '=', '>', '?', '@',  //7
+    
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',  // 26
+    
+    //'[',
+    
+    '\\',
+    
+    //']',
+    
+    '^', '_', 0x60,
+    
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',  // 26
+    
+    //'{', '|',    '}',
+    
+    '~',
+};
+
+static int BASE = sizeof(BaseChar);
+
+static void addDecValue (int * pArray, int n, int carry){
+    int tmp = 0;
+    int i;
+    
+    for (i = (n-1); (i >= 0); i--){
+        tmp = (pArray[i] * 10) + carry;
+        pArray[i] = tmp % BASE;
+        carry = tmp / BASE;
+    }
 }
 
 - (NSArray *)componentsSeparatedByData:(NSData *)data forData:(NSData *)raw {
