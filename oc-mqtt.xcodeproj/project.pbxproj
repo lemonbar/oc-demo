@@ -11,12 +11,11 @@
 		99DAE772E559E7EC542F65C7 /* libPods-oc-mqttTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CD27626F26EA409A52EB62 /* libPods-oc-mqttTests.a */; };
 		E48C0266212D417B00A2916F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E48C0265212D417B00A2916F /* AppDelegate.m */; };
 		E48C0269212D417B00A2916F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48C0268212D417B00A2916F /* ViewController.m */; };
-		E48C026C212D417B00A2916F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48C026A212D417B00A2916F /* Main.storyboard */; };
 		E48C026F212D417B00A2916F /* oc_mqtt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E48C026D212D417B00A2916F /* oc_mqtt.xcdatamodeld */; };
 		E48C0271212D417C00A2916F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48C0270212D417C00A2916F /* Assets.xcassets */; };
-		E48C0274212D417C00A2916F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48C0272212D417C00A2916F /* LaunchScreen.storyboard */; };
 		E48C0277212D417C00A2916F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E48C0276212D417C00A2916F /* main.m */; };
 		E48C0281212D417C00A2916F /* oc_mqttTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E48C0280212D417C00A2916F /* oc_mqttTests.m */; };
+		E48C02942138D99300A2916F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48C02922138D99300A2916F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,15 +39,14 @@
 		E48C0265212D417B00A2916F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E48C0267212D417B00A2916F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E48C0268212D417B00A2916F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E48C026B212D417B00A2916F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E48C026E212D417B00A2916F /* oc_mqtt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = oc_mqtt.xcdatamodel; sourceTree = "<group>"; };
 		E48C0270212D417C00A2916F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E48C0273212D417C00A2916F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E48C0275212D417C00A2916F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E48C0276212D417C00A2916F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E48C027C212D417C00A2916F /* oc-mqttTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "oc-mqttTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48C0280212D417C00A2916F /* oc_mqttTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oc_mqttTests.m; sourceTree = "<group>"; };
 		E48C0282212D417C00A2916F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E48C02932138D99300A2916F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2CD27626F26EA409A52EB62 /* libPods-oc-mqttTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-oc-mqttTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -115,13 +113,12 @@
 		E48C0263212D417B00A2916F /* oc-mqtt */ = {
 			isa = PBXGroup;
 			children = (
+				E48C02922138D99300A2916F /* LaunchScreen.storyboard */,
 				E48C0264212D417B00A2916F /* AppDelegate.h */,
 				E48C0265212D417B00A2916F /* AppDelegate.m */,
 				E48C0267212D417B00A2916F /* ViewController.h */,
 				E48C0268212D417B00A2916F /* ViewController.m */,
-				E48C026A212D417B00A2916F /* Main.storyboard */,
 				E48C0270212D417C00A2916F /* Assets.xcassets */,
-				E48C0272212D417C00A2916F /* LaunchScreen.storyboard */,
 				E48C0275212D417C00A2916F /* Info.plist */,
 				E48C0276212D417C00A2916F /* main.m */,
 				E48C026D212D417B00A2916F /* oc_mqtt.xcdatamodeld */,
@@ -220,9 +217,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E48C0274212D417C00A2916F /* LaunchScreen.storyboard in Resources */,
 				E48C0271212D417C00A2916F /* Assets.xcassets in Resources */,
-				E48C026C212D417B00A2916F /* Main.storyboard in Resources */,
+				E48C02942138D99300A2916F /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,18 +301,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E48C026A212D417B00A2916F /* Main.storyboard */ = {
+		E48C02922138D99300A2916F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E48C026B212D417B00A2916F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E48C0272212D417C00A2916F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E48C0273212D417C00A2916F /* Base */,
+				E48C02932138D99300A2916F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

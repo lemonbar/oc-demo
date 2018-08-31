@@ -20,13 +20,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupNavigationBar];
+//    [self setupSubViews];
     // Do any additional setup after loading the view, typically from a nib.
 //    [self subscribeMQTT];
 }
 
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setupSubViews {
+    UIButton *startBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    startBtn.frame = CGRectMake(0, 44, 44,44);
+    [startBtn setTitle:@"开始" forState:UIControlStateNormal];
+    [startBtn setBackgroundColor:[UIColor blackColor]];
+    startBtn.contentMode = UIViewContentModeScaleToFill;
+    [startBtn addTarget:self action:@selector(subscribeMQTT) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:startBtn];
+}
+
+- (void)setupNavigationBar {
+//    [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationItem.title = @"MQTT订阅";
 }
 
 - (void) subscribeMQTT {
